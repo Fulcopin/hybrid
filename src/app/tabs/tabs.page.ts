@@ -1,19 +1,17 @@
-import { Component, EnvironmentInjector, inject } from '@angular/core';
-import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/angular/standalone';
-import { addIcons } from 'ionicons';
-import { triangle, ellipse, square } from 'ionicons/icons';
+import { Component } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
+import { addIcons } from 'ionicons'; // Importa correctamente addIcons
+import { camera, peopleCircle } from 'ionicons/icons'; // Importa los íconos necesarios
 
 @Component({
   selector: 'app-tabs',
-  templateUrl: 'tabs.page.html',
-  styleUrls: ['tabs.page.scss'],
+  templateUrl: './tabs.page.html',
+  styleUrls: ['./tabs.page.scss'],
   standalone: true,
-  imports: [IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel],
+  imports: [IonicModule], // Usa IonicModule para incluir todos los componentes de Ionic
 })
 export class TabsPage {
-  public environmentInjector = inject(EnvironmentInjector);
-
   constructor() {
-    addIcons({ triangle, ellipse, square });
+    addIcons({ camera, peopleCircle }); // Mantén la funcionalidad de los íconos
   }
 }

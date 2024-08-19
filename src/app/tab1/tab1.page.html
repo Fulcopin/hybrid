@@ -1,17 +1,35 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card class="ion-padding-bottom ion-margin-bottom">
+    <ion-card-header>
+      <ion-card-title>Memorias</ion-card-title>
+    </ion-card-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <ion-card-content class="ion-text-center">
+      <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+        <ion-item>
+          <!-- Ícono junto al campo de entrada del formulario -->
+          <ion-icon slot="start" name="create-outline"></ion-icon>
+          <ion-input formControlName="texto" placeholder="Ingresa tu memoria"></ion-input>
+        </ion-item>
+        <ion-button expand="block" type="submit">Enviar</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Lista de Memorias</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let datum of data">
+          <!-- Agregar un ícono a cada ítem de la lista de memorias -->
+          <ion-icon slot="start" name="book-outline"></ion-icon>
+          <ion-label>{{ datum?.texto }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+
